@@ -24,4 +24,5 @@ ListNode *partition(ListNode *head, int x)
 
     ListNode *new_head = low->next;
     return new_head;
+    
 }

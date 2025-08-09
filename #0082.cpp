@@ -1,16 +1,21 @@
-ListNode* deleteDuplicates(ListNode* head) {
-        if(head == NULL || head->next == NULL)
-            return head;
-        ListNode* t1 = head;
-        ListNode* t2 = head->next;
-        while(t1 && t1->next){
-            if(t1->val == t2->val){
-                t2 = t2->next;
-                t1->next = t1->next->next;
-            } else{
-                t1 = t2;
-                t2 = t2->next;
-            }
+ListNode *deleteDuplicates(ListNode *head)
+{
+    ListNode dummy(0, head);
+    ListNode *temp = &dummy;
+    while (head)
+    {
+        if (head->next && head->val == head->next->val)
+        {
+            while (head->next && head->val == head->next->val)
+                head = head->next;
+            head = head->next;
+            temp->next = head;
         }
-        return head;
+        else
+        {
+            temp = head;
+            head = head->next;
+        }
     }
+    return dummy.next;
+}

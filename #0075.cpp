@@ -18,3 +18,9 @@ void sortColors(vector<int> &nums)
         }
     }
 }
+
+// optimal solution for sorting colors in a single pass
+// Dutch National Flag problem
+// Time complexity: O(n)
+// Space complexity: O(1)
+// This function sorts an array containing only 0s, 1s, and 2s in-place.

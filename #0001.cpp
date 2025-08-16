@@ -12,3 +12,40 @@ public:
         return result;
     }
 };
+
+// optimal solution
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> num_map;
+        for (int i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+            if (num_map.find(complement) != num_map.end()) {
+                return {num_map[complement], i};
+            }
+            num_map[nums[i]] = i;
+        }
+        return {};
+    }
+};
+
+// optimal solution using two pointers
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> result;
+        int left = 0, right = nums.size() - 1;
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum == target) {
+                result = {left, right};
+                return result;
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return result;
+    }
+};

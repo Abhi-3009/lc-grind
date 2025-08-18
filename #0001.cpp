@@ -1,10 +1,14 @@
-class Solution {
+class Solution
+{
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(vector<int> &nums, int target)
+    {
         int i, j;
         vector<int> result;
-        for (i = 0; i < nums.size(); i++) {
-            for (j = i + 1; j < nums.size(); j++) {
+        for (i = 0; i < nums.size(); i++)
+        {
+            for (j = i + 1; j < nums.size(); j++)
+            {
                 if ((nums[i] + nums[j]) == target)
                     result = {i, j};
             }
@@ -14,35 +18,45 @@ public:
 };
 
 // optimal solution
-class Solution {
+class Solution
+{
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> num_map;
-        for (int i = 0; i < nums.size(); i++) {
-            int complement = target - nums[i];
-            if (num_map.find(complement) != num_map.end()) {
-                return {num_map[complement], i};
-            }
-            num_map[nums[i]] = i;
+    vector<int> twoSum(vector<int> &nums, int target)
+    {
+        unordered_map<int, int> mp;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            int comp = target - nums[i];
+            if (mp.count(comp))
+                return {mp[comp], i};
+            mp[nums[i]] = i;
         }
         return {};
     }
 };
 
 // optimal solution using two pointers
-class Solution {
+class Solution
+{
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(vector<int> &nums, int target)
+    {
         vector<int> result;
         int left = 0, right = nums.size() - 1;
-        while (left < right) {
+        while (left < right)
+        {
             int sum = nums[left] + nums[right];
-            if (sum == target) {
+            if (sum == target)
+            {
                 result = {left, right};
                 return result;
-            } else if (sum < target) {
+            }
+            else if (sum < target)
+            {
                 left++;
-            } else {
+            }
+            else
+            {
                 right--;
             }
         }

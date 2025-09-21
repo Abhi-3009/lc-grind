@@ -7,7 +7,6 @@ TreeNode *helper(vector<int> &preorder, int left, int right)
 
     int rootval = preorder[pre++];
     TreeNode *root = new TreeNode(rootval);
-
     int mid = ino[rootval];
     root->left = helper(preorder, left, mid - 1);
     root->right = helper(preorder, mid + 1, right);

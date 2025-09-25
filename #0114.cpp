@@ -2,18 +2,16 @@ void flatten(TreeNode *root)
 {
     if (!root)
         return;
-    TreeNode *f = root;
-    TreeNode *r = root->left;
-    if (r)
+    if (root->left)
     {
-        flatten(r);
-        TreeNode *temp = f->right;
-        f->right = r;
-        f->left = NULL;
+        flatten(root->left);
+        TreeNode *temp = root->right;
+        root->right = root->left;
+        root->left = NULL;
 
-        while (f->right)
-            f = f->right;
-        f->right = temp;
+        while (root->right)
+            root = root->right;
+        root->right = temp;
     }
     flatten(root->right);
 }
